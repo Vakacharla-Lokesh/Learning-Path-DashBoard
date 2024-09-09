@@ -12,15 +12,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.static("/views/images"));
 
-// const db = new pg.Client({
-//     user: "postgres",
-//     host: "localhost",
-//     database: "sih",
-//     password: "luckyloki",
-//     port: 5432,
-// });
+const db = new pg.Client({
+    user: "postgres",
+    host: "localhost",
+    database: "sih",
+    password: "luckyloki",
+    port: 5432,
+});
 
-// db.connect();
+db.connect();
 
 // VARIABLES TO UPDATE USER LOGIN STATUS AND HOME PAGE LINK IN LOGO
 var logged_in = "false";
@@ -34,7 +34,7 @@ function search_course(course_type){
 
     // course_names = db.query("SELECT * FROM courses WHERE course_type = " + course_type + "\"");
     course_names = db.query(`SELECT * FROM courses WHERE course_type = ${course_type}`);
-    console.log(course_names);
+    // console.log(course_names);
     return course_names;
 }
 // HOME PAGE RENDER
@@ -48,14 +48,33 @@ app.get("/", (req, res) => {
 });
 //USER LOGIN DASHBOARD
 app.get("/user", (req, res) => {
-
-    res.render("index.ejs",
+  // console.log(curr_user);
+    if(curr_user.user_type == "Student"){
+      res.render("index.ejs",
         {
             curr_login: logged_in,
             home_link: home_url,
-
+            user_data: curr_user
         }
-    );
+      );
+    }else if(curr_user.user_type == "Instructor"){
+      res.render("instructor_page.ejs",
+        {
+            curr_login: logged_in,
+            home_link: home_url,
+            user_data: curr_user
+        }
+      );
+    }
+    else{
+      res.render("index.ejs",
+        {
+            curr_login: logged_in,
+            home_link: home_url,
+            user_data: curr_user
+        }
+      );
+    }
 });
 
 // SIGNUP PAGE RENDER
@@ -77,6 +96,11 @@ app.get('/search', (req, res) =>{
         });
 });
 
+// ADD COURSE ROUTE
+app.get('/add_course', (req, res) =>{
+  res.render("instructor_add.ejs");
+});
+
 // SEARCH RESULTS
 app.get('/search_results', (req, res) =>{
     const course_type = req.query.course_text;
@@ -87,13 +111,13 @@ app.get('/search_results', (req, res) =>{
     let results;
     let course_numbs = 0;
 
-    // if(course_search_status == null){
-    //     results = "No such courses found";
-    //     course_numbs = 0;
-    // }else{
-    //     results = `Showing ${course_search_status.length} results`;
-    //     course_numbs = course_search_status.length;
-    // }
+    if(course_search_status == null){
+        results = "No such courses found";
+        course_numbs = 0;
+    }else{
+        results = `Showing ${course_search_status.length} results`;
+        course_numbs = course_search_status.length;
+    }
 
     res.render("search_results.ejs", {
         curr_login: logged_in,
@@ -117,9 +141,9 @@ app.post('/login', (req, res) => {
         text: `SELECT * FROM students WHERE user_name = $1`,
         values: [username]
       };
-      console.log(query);
+      // console.log(query);
       db.query(query, async(err, result) => {
-        console.log(err);
+        // console.log(err);
         if (err) {
           return res.status(500).send({ error: 'Failed to query database' });
         }
@@ -127,7 +151,7 @@ app.post('/login', (req, res) => {
           return res.status(401).send({ error: 'Invalid username or password' });
         }
         const user = result.rows[0];
-        console.log(user);
+        // console.log(user);
         const isValid = bcrypt.compare(password, user.password);
         if (!isValid) {
           return res.status(401).send({ error: 'Invalid username or password' });
@@ -151,10 +175,10 @@ app.post('/signup', (req, res) => {
         values: [user_id, username, email, hashedPassword, user_type]
       };
 
-      console.log(query);
+      // console.log(query);
   
       db.query(query, async(err, result) => {
-        console.log(result);
+        // console.log(result);
         if (err) {
           if (err.code === '23505') {
             return res.status(400).send({ error: 'Username already exists' });
@@ -171,6 +195,18 @@ app.post('/signup', (req, res) => {
     }
   });
 
+// CODE EDITOR ROUTE
+app.get("/editor", (req, res) =>{
+  res.render("editor.ejs");
+});
+
+// COURSE PAGE
+app.get('/course_page', (req, res) =>{
+  res.render("course_page.ejs", {
+    curr_login: logged_in,
+    home_link: home_url
+  });
+})
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

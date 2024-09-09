@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="shortcut icon" href="\images\logo.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="\styles\style.css">
+</head>
+<body>
+    <header>
+        <div class="logo" title="University Management System">
+            <a href=<% home_link %>>
+                <img src="\images\logo.png" alt="">
+                <h2>U<span class="danger">M</span>S</h2>
+            </a>
+        </div>
+        <div class="navbar">
+            <a href="/" class="active">
+                <span class="material-icons-sharp">home</span>
+                <h3>Profile</h3>
+            </a>
+            <a href="/search">
+                <span class="material-symbols-outlined">search</span>
+                <h3>Search</h3>
+            </a> 
+            <a href="/search_results">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>Courses</h3>
+            </a>
+            <a href="/add_course">
+                <span class="material-icons-sharp">editor</span>
+                <h3>Create Course</h3>
+            </a>
+            <!-- <a href="#">
+                <span class="material-icons-sharp" onclick="">logout</span>
+                <h3>Logout</h3>
+            </a> -->
+            <% if(curr_login == "false"){ %>
+                <a href="/login-get">
+                    <span class="material-icons-sharp" onclick="">login</span>
+                    <h3>Login</h3>
+                </a>
+            <%}else{ %>
+                  <a href="/logout">
+                    <div class="logo">
+                        <span class="material-icons-sharp" onclick="">logout</span>
+                        <h3>Logout</h3>
+                    </div>
+                  </a>
+            <% } %>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">person</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+        
+    </header>
+    <div class="container">
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="\images\profile-1.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Hey, <b><%= user_data.user_name %></b> </p>
+                        <small class="text-muted">12102030</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Course</h5>
+                    <p>BTech. Computer Science & Engineering</p>
+                    <h5>University Name</h5>
+                    <p>Amity University, Noida</p>
+                    <h5>User Id:</h5>
+                    <p> <%= user_data.user_id %> </p>
+                    <h5>Contact</h5>
+                    <p>1234567890</p>
+                    <h5>Email</h5>
+                    <p> <%= user_data.email_id %> </p>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <h1>My Courses</h1>
+            <div class="subjects">
+                <div class="eg">
+                    <span class="material-icons-sharp">architecture</span>
+                    <h3>Engineering Graphics</h3>
+                    <h2>12/14</h2>
+                    <div class="progress">
+                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                        <div class="number"><p>86%</p></div>
+                    </div>
+                    <small class="text-muted">Last 24 Hours</small>
+                </div>
+            </div>
+        </main>
+
+        </div>
+    </div>
+
+    <script>
+        const sideMenu = document.querySelector("aside");
+        const profileBtn = document.querySelector("#profile-btn");
+        const themeToggler = document.querySelector(".theme-toggler");
+
+        profileBtn.onclick = function() {
+            sideMenu.classList.toggle('active');
+        }
+        window.onscroll = () => {
+            sideMenu.classList.remove('active');
+            if(window.scrollY > 0){document.querySelector('header').classList.add('active');}
+            else{document.querySelector('header').classList.remove('active');}
+        }
+
+        themeToggler.onclick = function() {
+            document.body.classList.toggle('dark-theme');
+            themeToggler.querySelector('span:nth-child(1)').classList.toggle('active')
+            themeToggler.querySelector('span:nth-child(2)').classList.toggle('active')
+        }
+    </script>
+</body>
+</html>

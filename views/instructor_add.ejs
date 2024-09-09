@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .entry {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        select, input, button {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        #addEntry {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #addEntry:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Form</h1>
+    <form id="dynamicForm" method="post">
+        <label for="username">Course name:</label>
+        <input type="text" id="course_name" name="course_name"><br>
+        <label for="username">Course description:</label>
+        <input type="text" id="course_desc" name="course_desc"><br>
+        <div id="entries"></div>
+        <button type="button" id="addEntry">ADD</button>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const entries = [];
+
+        function createEntry() {
+            const entryDiv = document.createElement('div');
+            entryDiv.className = 'entry';
+
+            const select = document.createElement('select');
+            select.innerHTML = `
+                <option value="description">Description</option>
+                <option value="youtube">YouTube Link</option>
+                <option value="file">File Link</option>
+            `;
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.placeholder = 'Enter description';
+
+            select.addEventListener('change', (e) => {
+                switch (e.target.value) {
+                    case 'description':
+                        input.placeholder = 'Enter description';
+                        break;
+                    case 'youtube':
+                        input.placeholder = 'Enter YouTube link';
+                        break;
+                    case 'file':
+                        input.placeholder = 'Enter file link';
+                        break;
+                }
+            });
+
+            entryDiv.appendChild(select);
+            entryDiv.appendChild(input);
+
+            document.getElementById('entries').appendChild(entryDiv);
+        }
+
+        document.getElementById('addEntry').addEventListener('click', createEntry);
+
+        document.getElementById('dynamicForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formEntries = document.querySelectorAll('.entry');
+            formEntries.forEach(entry => {
+                const type = entry.querySelector('select').value;
+                const value = entry.querySelector('input').value;
+                entries.push({ type, value });
+            });
+            console.log('Form entries:', entries);
+            alert('Form submitted! Check console for the entries array.');
+        });
+
+        // Create the first entry
+        createEntry();
+    </script>
+</body>
+</html>
