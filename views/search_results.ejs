@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Development Courses</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="\styles\style.css">
     <style>
         header{
             position: fixed;
@@ -87,105 +90,109 @@
         }
     </style>
 </head>
-<header>
-    <div class="logo" title="University Management System">
-        <a href=<% home_link %>>
-            <img src="\images\logo.png" alt="">
-            <h2>U<span class="danger">M</span>S</h2>
-        </a>
-    </div>
-    <div class="navbar">
-        <a href="/" class="active">
-            <span class="material-icons-sharp">home</span>
-            <h3>Profile</h3>
-        </a>
-        <a href="/search" onclick="timeTableAll()">
-            <span class="material-symbols-outlined">search</span>
-            <h3>Search</h3>
-        </a> 
-        <a href="./exam.html">
-            <span class="material-icons-sharp">grid_view</span>
-            <h3>Courses</h3>
-        </a>
-        <a href="./password.html">
-            <span class="material-icons-sharp">password</span>
-            <h3>Change Password</h3>
-        </a>
-        <!-- <a href="#">
-            <span class="material-icons-sharp" onclick="">logout</span>
-            <h3>Logout</h3>
-        </a> -->
-        <% if(curr_login == "false"){ %>
-            <a href="/login-get">
-                <span class="material-icons-sharp" onclick="">login</span>
-                <h3>Login</h3>
-            </a>
-        <%}else{ %>
-              <a href="/logout">
-                <div class="logo">
-                    <span class="material-icons-sharp" onclick="">logout</span>
-                    <h3>Logout</h3>
-                </div>
-              </a>
-        <% } %>
-    </div>
-    <div id="profile-btn">
-        <span class="material-icons-sharp">person</span>
-    </div>
-    <div class="theme-toggler">
-        <span class="material-icons-sharp active">light_mode</span>
-        <span class="material-icons-sharp">dark_mode</span>
-    </div>
-    
-</header>
 <body>
-    <div class="course-card">
-        <div class="course-image">
-            <img src="/api/placeholder/200/150" alt="Course thumbnail">
+    <header>
+        <div class="logo" title="University Management System">
+            <a href=<% home_link %>>
+                <img src="\images\logo.png" alt="">
+                <h2>U<span class="danger">M</span>S</h2>
+            </a>
         </div>
-        <div class="course-details">
-            <div class="course-title">The Complete 2024 Web Development Bootcamp</div>
-            <div class="course-description">Become a Full-Stack Web Developer with just ONE course. HTML, CSS, Javascript, Node, React, PostgreSQL, Web3 and DApps</div>
-            <div class="course-instructor">Dr. Angela Yu, Developer and Lead Instructor</div>
-            <div class="course-rating">
-                <span class="stars">★★★★☆</span>
-                <span class="rating">4.7</span>
-                <span class="rating-count">(400,811)</span>
+        <div class="navbar">
+            <a href="/" class="active">
+                <span class="material-icons-sharp">home</span>
+                <h3>Profile</h3>
+            </a>
+            <a href="/search">
+                <span class="material-symbols-outlined">search</span>
+                <h3>Search</h3>
+            </a> 
+            <a href="/search_results">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>Courses</h3>
+            </a>
+            <a href="./password.html">
+                <span class="material-icons-sharp">password</span>
+                <h3>Change Password</h3>
+            </a>
+            <!-- <a href="#">
+                <span class="material-icons-sharp" onclick="">logout</span>
+                <h3>Logout</h3>
+            </a> -->
+            <% if(curr_login == "false"){ %>
+                <a href="/login-get">
+                    <span class="material-icons-sharp" onclick="">login</span>
+                    <h3>Login</h3>
+                </a>
+            <%}else{ %>
+                  <a href="/logout">
+                    <div class="logo">
+                        <span class="material-icons-sharp" onclick="">logout</span>
+                        <h3>Logout</h3>
+                    </div>
+                  </a>
+            <% } %>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">person</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+        
+    </header>
+    <a href="/contents">
+        <div class="course-card">
+            <div class="course-image">
+                <!--  image source please -->
+                <img src="/api/placeholder/200/150" alt="Course thumbnail">
             </div>
-            <div class="course-meta">61.5 total hours · 373 lectures · All Levels</div>
-            <div class="bestseller">Bestseller</div>
-        </div>
-    </div>
-
-    <div class="course-card">
-        <div class="course-image">
-            <img src="/api/placeholder/200/150" alt="Course thumbnail">
-        </div>
-        <div class="course-details">
-            <div class="course-title">The Web Developer Bootcamp 2024</div>
-            <div class="course-description">10 Hours of React just added. Become a Developer With ONE course - HTML, CSS, JavaScript, React, Node, MongoDB and More!</div>
-            <div class="course-instructor">Colt Steele</div>
-            <div class="course-rating">
-                <span class="stars">★★★★☆</span>
-                <span class="rating">4.7</span>
-                <span class="rating-count">(275,474)</span>
-            </div>
-            <div class="course-meta">74 total hours · 729 lectures · All Levels</div>
-            <div class="lecture-section">
-                <div>2 Lectures about "front end"</div>
-                <div class="lecture-item">
-                    <span class="lecture-icon">▶</span>
-                    <span>Front-End and Back-End</span>
+            <div class="course-details">
+                <div class="course-title">The Complete 2024 Web Development Bootcamp</div>
+                <div class="course-description">Become a Full-Stack Web Developer with just ONE course. HTML, CSS, Javascript, Node, React, PostgreSQL, Web3 and DApps</div>
+                <div class="course-instructor">Dr. Angela Yu, Developer and Lead Instructor</div>
+                <div class="course-rating">
+                    <span class="stars">★★★★☆</span>
+                    <span class="rating">4.7</span>
+                    <span class="rating-count">(400,811)</span>
                 </div>
-                <div class="lecture-item">
-                    <span class="lecture-icon">▶</span>
-                    <span>LEGACY Download: Introduction To Front End Development</span>
+                <div class="course-meta">61.5 total hours · 373 lectures · All Levels</div>
+                <div class="bestseller">Bestseller</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="/contents">
+        <div class="course-card">
+            <div class="course-image">
+                <!-- image sources plz -->
+                <img src="/api/placeholder/200/150" alt="Course thumbnail">
+            </div>
+            <div class="course-details">
+                <div class="course-title">The Web Developer Bootcamp 2024</div>
+                <div class="course-description">10 Hours of React just added. Become a Developer With ONE course - HTML, CSS, JavaScript, React, Node, MongoDB and More!</div>
+                <div class="course-instructor">Colt Steele</div>
+                <div class="course-rating">
+                    <span class="stars">★★★★☆</span>
+                    <span class="rating">4.7</span>
+                    <span class="rating-count">(275,474)</span>
+                </div>
+                <div class="course-meta">74 total hours · 729 lectures · All Levels</div>
+                <div class="lecture-section">
+                    <div>2 Lectures about "front end"</div>
+                    <div class="lecture-item">
+                        <span class="lecture-icon">▶</span>
+                        <span>Front-End and Back-End</span>
+                    </div>
+                    <div class="lecture-item">
+                        <span class="lecture-icon">▶</span>
+                        <span>LEGACY Download: Introduction To Front End Development</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <%- include("partials/footer.ejs") %>
+    </a>
 
 </body>
 </html>

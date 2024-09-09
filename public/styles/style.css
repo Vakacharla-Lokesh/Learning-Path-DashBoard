@@ -103,7 +103,11 @@ header .logo img{
     height: 2rem;
 }
 
-header,
+header{
+    position: fixed;
+    top: 0px;
+}
+
 header .navbar{
     display: flex;
     align-items: center;
