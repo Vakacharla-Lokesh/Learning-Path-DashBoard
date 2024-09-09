@@ -1,0 +1,19 @@
+{
+  "name": "learning-path-dashboard",
+  "version": "1.0.0",
+  "description": "A minimal, responsive and dynamic Student Dashboard  project made up using HTML, CSS &amp; JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "pg": "^8.12.0"
+  }
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>Login</title>
+    <style>
+      body {
+        background-color: black;
+        font-family: sans-serif;
+        color: aliceblue;
+      }
+  
+      .container {
+        display: flex;
+        justify-content: space-between;
+        margin: 50px;
+      }
+  
+      .left {
+        width: 50%;
+        padding: 20px;
+        background-color: rgb(33, 33, 33);
+        border-radius: 10px;
+      }
+  
+      .right {
+        width: 35%;
+        padding: 20px;
+        background-color: rgb(33, 33, 33);
+        border-radius: 10px;
+      }
+  
+      h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+  
+      p {
+        margin-bottom: 10px;
+      }
+  
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+  
+      #login-button {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <!-- <h1>Build Your Skills With Cisco</h1> -->
+        <!-- <p>Pursue real career paths through instructor-led courses taught by experts and free, online courses backed by Cisco's expertise.</p> -->
+        <img src="images/login.jpg" alt="login preview image" style="height: 500px; width: 600px;">
+        <!-- <img src="https://www.cisco.com/c/dam/m/en_us/images/solutions/cisco-networking-academy/cisco-academy-logo-black.png" alt="Networking Academy logo"> -->
+      </div>
+  
+      <div class="right">
+        <a href="/" style="text-decoration: none; color: #28a745; size: 25px;">← Go back</a>
+        <h1>Welcome!</h1>
+        <p>Please login to your account.</p>
+  
+        <form action="/login" method="post">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username"><br><br>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password"><br><br>
+          <input type="submit" id = "login-button" value="Login">
+        </form>
+
+        <br>
+        <a href="/forgot-password-get" style="justify-content: center; text-decoration: none; color: #28a745;">Forgot Password?</a>
+  
+        <!-- <button>Login</button> -->
+  
+        <p>Don't have an account? <a href="/signup-get" style="color: #28a745;">Sign up</a></p>
+      </div>
+    </div>
+  </body>
+  </html>

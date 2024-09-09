@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="shortcut icon" href="\images\logo.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="\styles\style.css">
+</head>
+<body>
+    <header>
+        <div class="logo" title="University Management System">
+            <a href=<% home_link %>>
+                <img src="\images\logo.png" alt="">
+                <h2>U<span class="danger">M</span>S</h2>
+            </a>
+        </div>
+        <div class="navbar">
+            <a href="./index.ejs" class="active">
+                <span class="material-icons-sharp">home</span>
+                <h3>Profile</h3>
+            </a>
+            <a href="/search" onclick="timeTableAll()">
+                <span class="material-symbols-outlined">search</span>
+                <h3>Search</h3>
+            </a> 
+            <a href="./exam.html">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>Courses</h3>
+            </a>
+            <a href="./password.html">
+                <span class="material-icons-sharp">password</span>
+                <h3>Change Password</h3>
+            </a>
+            <!-- <a href="#">
+                <span class="material-icons-sharp" onclick="">logout</span>
+                <h3>Logout</h3>
+            </a> -->
+            <% if(curr_login == "false"){ %>
+                <a href="/login-get">
+                    <span class="material-icons-sharp" onclick="">login</span>
+                    <h3>Login</h3>
+                </a>
+            <%}else{ %>
+                  <a href="/logout">
+                    <div class="logo">
+                        <span class="material-icons-sharp" onclick="">logout</span>
+                        <h3>Logout</h3>
+                    </div>
+                  </a>
+            <% } %>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">person</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+        
+    </header>

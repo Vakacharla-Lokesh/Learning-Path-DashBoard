@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>Signup</title>
+    <style>
+      body {
+        background-color: black;
+        font-family: sans-serif;
+        color: aliceblue;
+      }
+  
+      .container {
+        display: flex;
+        justify-content: space-between;
+        margin: 50px;
+      }
+  
+      .left {
+        width: 50%;
+        padding: 20px;
+        background-color: rgb(33, 33, 33);
+        border-radius: 10px;
+      }
+  
+      .right {
+        width: 35%;
+        padding: 20px;
+        background-color: rgb(33, 33, 33);
+        border-radius: 10px;
+      }
+  
+      h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+  
+      p {
+        margin-bottom: 10px;
+      }
+  
+      input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+  
+      #submit-button {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <!-- <h1>Build Your Skills With Cisco</h1> -->
+        <!-- <p>Pursue real career paths through instructor-led courses taught by experts and free, online courses backed by Cisco's expertise.</p> -->
+        <img src="images/login.jpg" alt="login preview image" style="height: 500px; width: 600px;">
+        <!-- <img src="https://www.cisco.com/c/dam/m/en_us/images/solutions/cisco-networking-academy/cisco-academy-logo-black.png" alt="Networking Academy logo"> -->
+      </div>
+  
+      <div class="right">
+        <a href="/" style="text-decoration: none; color: #28a745; size: 25px;">← Go back</a>
+        <h1>Sign Up</h1>
+        <form action="/signup" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password"><br><br>
+        <input type="submit" id = "submit-button" value="Sign Up">
+        </form>
+      </div>
+    </div>
+  </body>
+  </html>

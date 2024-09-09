@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Courses</title>
+    <style>
+        header{
+            position: fixed;
+            top: 0px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .course-card {
+            display: flex;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+        }
+        .course-image {
+            flex: 0 0 200px;
+            margin-right: 20px;
+        }
+        .course-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .course-details {
+            flex: 1;
+        }
+        .course-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .course-description {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .course-instructor {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .course-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .stars {
+            color: #f9a825;
+            margin-right: 5px;
+        }
+        .rating-count {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .course-meta {
+            font-size: 0.8em;
+            color: #666;
+        }
+        .bestseller {
+            display: inline-block;
+            background-color: #fffbdd;
+            color: #6a6f73;
+            font-size: 0.8em;
+            padding: 2px 5px;
+            border-radius: 3px;
+            margin-top: 5px;
+        }
+        .lecture-section {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .lecture-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .lecture-icon {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<header>
+    <div class="logo" title="University Management System">
+        <a href=<% home_link %>>
+            <img src="\images\logo.png" alt="">
+            <h2>U<span class="danger">M</span>S</h2>
+        </a>
+    </div>
+    <div class="navbar">
+        <a href="/" class="active">
+            <span class="material-icons-sharp">home</span>
+            <h3>Profile</h3>
+        </a>
+        <a href="/search" onclick="timeTableAll()">
+            <span class="material-symbols-outlined">search</span>
+            <h3>Search</h3>
+        </a> 
+        <a href="./exam.html">
+            <span class="material-icons-sharp">grid_view</span>
+            <h3>Courses</h3>
+        </a>
+        <a href="./password.html">
+            <span class="material-icons-sharp">password</span>
+            <h3>Change Password</h3>
+        </a>
+        <!-- <a href="#">
+            <span class="material-icons-sharp" onclick="">logout</span>
+            <h3>Logout</h3>
+        </a> -->
+        <% if(curr_login == "false"){ %>
+            <a href="/login-get">
+                <span class="material-icons-sharp" onclick="">login</span>
+                <h3>Login</h3>
+            </a>
+        <%}else{ %>
+              <a href="/logout">
+                <div class="logo">
+                    <span class="material-icons-sharp" onclick="">logout</span>
+                    <h3>Logout</h3>
+                </div>
+              </a>
+        <% } %>
+    </div>
+    <div id="profile-btn">
+        <span class="material-icons-sharp">person</span>
+    </div>
+    <div class="theme-toggler">
+        <span class="material-icons-sharp active">light_mode</span>
+        <span class="material-icons-sharp">dark_mode</span>
+    </div>
+    
+</header>
+<body>
+    <div class="course-card">
+        <div class="course-image">
+            <img src="/api/placeholder/200/150" alt="Course thumbnail">
+        </div>
+        <div class="course-details">
+            <div class="course-title">The Complete 2024 Web Development Bootcamp</div>
+            <div class="course-description">Become a Full-Stack Web Developer with just ONE course. HTML, CSS, Javascript, Node, React, PostgreSQL, Web3 and DApps</div>
+            <div class="course-instructor">Dr. Angela Yu, Developer and Lead Instructor</div>
+            <div class="course-rating">
+                <span class="stars">★★★★☆</span>
+                <span class="rating">4.7</span>
+                <span class="rating-count">(400,811)</span>
+            </div>
+            <div class="course-meta">61.5 total hours · 373 lectures · All Levels</div>
+            <div class="bestseller">Bestseller</div>
+        </div>
+    </div>
+
+    <div class="course-card">
+        <div class="course-image">
+            <img src="/api/placeholder/200/150" alt="Course thumbnail">
+        </div>
+        <div class="course-details">
+            <div class="course-title">The Web Developer Bootcamp 2024</div>
+            <div class="course-description">10 Hours of React just added. Become a Developer With ONE course - HTML, CSS, JavaScript, React, Node, MongoDB and More!</div>
+            <div class="course-instructor">Colt Steele</div>
+            <div class="course-rating">
+                <span class="stars">★★★★☆</span>
+                <span class="rating">4.7</span>
+                <span class="rating-count">(275,474)</span>
+            </div>
+            <div class="course-meta">74 total hours · 729 lectures · All Levels</div>
+            <div class="lecture-section">
+                <div>2 Lectures about "front end"</div>
+                <div class="lecture-item">
+                    <span class="lecture-icon">▶</span>
+                    <span>Front-End and Back-End</span>
+                </div>
+                <div class="lecture-item">
+                    <span class="lecture-icon">▶</span>
+                    <span>LEGACY Download: Introduction To Front End Development</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("partials/footer.ejs") %>
+
+</body>
+</html>

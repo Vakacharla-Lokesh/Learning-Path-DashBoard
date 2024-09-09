@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="shortcut icon" href="\images\logo.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="\styles\style.css">
+</head>
+<body>
+    <header>
+        <div class="logo" title="University Management System">
+            <a href=<% home_link %>>
+                <img src="\images\logo.png" alt="">
+                <h2>U<span class="danger">M</span>S</h2>
+            </a>
+        </div>
+        <div class="navbar">
+            <a href="/" class="active">
+                <span class="material-icons-sharp">home</span>
+                <h3>Profile</h3>
+            </a>
+            <a href="/search" onclick="timeTableAll()">
+                <span class="material-symbols-outlined">search</span>
+                <h3>Search</h3>
+            </a> 
+            <a href="./exam.html">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>Courses</h3>
+            </a>
+            <a href="./password.html">
+                <span class="material-icons-sharp">password</span>
+                <h3>Change Password</h3>
+            </a>
+            <!-- <a href="#">
+                <span class="material-icons-sharp" onclick="">logout</span>
+                <h3>Logout</h3>
+            </a> -->
+            <% if(curr_login == "false"){ %>
+                <a href="/login-get">
+                    <span class="material-icons-sharp" onclick="">login</span>
+                    <h3>Login</h3>
+                </a>
+            <%}else{ %>
+                  <a href="/logout">
+                    <div class="logo">
+                        <span class="material-icons-sharp" onclick="">logout</span>
+                        <h3>Logout</h3>
+                    </div>
+                  </a>
+            <% } %>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">person</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+        
+    </header>
+    <div class="container">
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="\images\profile-1.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Hey, <b>Alex</b> </p>
+                        <small class="text-muted">12102030</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Course</h5>
+                    <p>BTech. Computer Science & Engineering</p>
+                    <h5>DOB</h5>
+                    <p>29-Feb-2020</p>
+                    <h5>Contact</h5>
+                    <p>1234567890</p>
+                    <h5>Email</h5>
+                    <p>unknown@gmail.com</p>
+                    <h5>Address</h5>
+                    <p>Ghost town Road, New York, America</p>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <h1>Progress</h1>
+            <div class="subjects">
+                <div class="eg">
+                    <span class="material-icons-sharp">architecture</span>
+                    <h3>Engineering Graphics</h3>
+                    <h2>12/14</h2>
+                    <div class="progress">
+                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                        <div class="number"><p>86%</p></div>
+                    </div>
+                    <small class="text-muted">Last 24 Hours</small>
+                </div>
+                <div class="mth">
+                    <span class="material-icons-sharp">functions</span>
+                    <h3>Mathematical Engineering</h3>
+                    <h2>27/29</h2>
+                    <div class="progress">
+                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                        <div class="number"><p>93%</p></div>
+                    </div>
+                    <small class="text-muted">Last 24 Hours</small>
+                </div>
+                <div class="cs">
+                    <span class="material-icons-sharp">computer</span>
+                    <h3>Computer Architecture</h3>
+                    <h2>27/30</h2>
+                    <div class="progress">
+                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                        <div class="number"><p>81%</p></div>
+                    </div>
+                    <small class="text-muted">Last 24 Hours</small>
+                </div>
+                <div class="cg">
+                    <span class="material-icons-sharp">dns</span>
+                    <h3>Database Management</h3>
+                    <h2>24/25</h2>
+                    <div class="progress">
+                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                        <div class="number"><p>96%</p></div>
+                    </div>
+                    <small class="text-muted">Last 24 Hours</small>
+                </div>
+                <div class="net">
+                    <span class="material-icons-sharp">router</span>
+                    <h3>Network Security</h3>
+                    <h2>25/27</h2>
+                    <div class="progress">
+                        <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                        <div class="number"><p>92%</p></div>
+                    </div>
+                    <small class="text-muted">Last 24 Hours</small>
+                </div>
+            </div>
+
+                <!-- <div class="timetable" id="timetable">
+                    <div>
+                        <span id="prevDay">&lt;</span>
+                        <h2>Today's Timetable</h2>
+                        <span id="nextDay">&gt;</span>
+                    </div>
+                    <span class="closeBtn" onclick="timeTableAll()">X</span>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Room No.</th>
+                                <th>Subject</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div> -->
+        </main>
+
+        <div class="right">
+            <div class="announcements">
+                <h2>Announcements</h2>
+                <div class="updates">
+                    <div class="message">
+                        <p> <b>Academic</b> Summer training internship with Live Projects.</p>
+                        <small class="text-muted">2 Minutes Ago</small>
+                    </div>
+                    <div class="message">
+                        <p> <b>Co-curricular</b> Global internship oportunity by Student organization.</p>
+                        <small class="text-muted">10 Minutes Ago</small>
+                    </div>
+                    <div class="message">
+                        <p> <b>Examination</b> Instructions for Mid Term Examination.</p>
+                        <small class="text-muted">Yesterday</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="leaves">
+                <h2>Teachers on leave</h2>
+                <div class="teacher">
+                    <div class="profile-photo"><img src="./images/profile-2.jpeg" alt=""></div>
+                    <div class="info">
+                        <h3>The Professor</h3>
+                        <small class="text-muted">Full Day</small>
+                    </div>
+                </div>
+                <div class="teacher">
+                    <div class="profile-photo"><img src="./images/profile-3.jpg" alt=""></div>
+                    <div class="info">
+                        <h3>Lisa Manobal</h3>
+                        <small class="text-muted">Half Day</small>
+                    </div>
+                </div>
+                <div class="teacher">
+                    <div class="profile-photo"><img src="./images/profile-4.jpg" alt=""></div>
+                    <div class="info">
+                        <h3>Himanshu Jindal</h3>
+                        <small class="text-muted">Full Day</small>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+
+    <script>
+        const sideMenu = document.querySelector("aside");
+        const profileBtn = document.querySelector("#profile-btn");
+        const themeToggler = document.querySelector(".theme-toggler");
+        const nextDay = document.getElementById('nextDay');
+        const prevDay = document.getElementById('prevDay');
+
+        profileBtn.onclick = function() {
+            sideMenu.classList.toggle('active');
+        }
+        window.onscroll = () => {
+            sideMenu.classList.remove('active');
+            if(window.scrollY > 0){document.querySelector('header').classList.add('active');}
+            else{document.querySelector('header').classList.remove('active');}
+        }
+
+        themeToggler.onclick = function() {
+            document.body.classList.toggle('dark-theme');
+            themeToggler.querySelector('span:nth-child(1)').classList.toggle('active')
+            themeToggler.querySelector('span:nth-child(2)').classList.toggle('active')
+        }
+
+        let setData = (day) =>{
+            document.querySelector('table tbody').innerHTML = ' '; //To clear out previous table data;  
+            let daylist = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+            document.querySelector('.timetable div h2').innerHTML = daylist[day];
+            switch(day){
+                case(0): day = Sunday; break;
+                case(1): day = Monday; break;
+                case(2): day = Tuesday; break;
+                case(3): day = Wednesday; break;
+                case(4): day = Thursday; break;
+                case(5): day = Friday; break;
+                case(6): day = Saturday; break;
+            }
+
+            day.forEach(sub => {
+                const tr = document.createElement('tr');
+                const trContent = `
+                                    <td>${sub.time}</td>
+                                    <td>${sub.roomNumber}</td>
+                                    <td>${sub.subject}</td>
+                                    <td>${sub.type}</td>
+                                `
+                tr.innerHTML = trContent;
+                document.querySelector('table tbody').appendChild(tr)                        
+            });
+        }
+
+        let now = new Date();
+        let today = now.getDay(); // Will return the present day in numerical value; 
+        let day = today; //To prevent the today value from changing;
+
+        function timeTableAll(){
+            document.getElementById('timetable').classList.toggle('active');
+            setData(today);
+            document.querySelector('.timetable div h2').innerHTML = "Today's Timetable";
+        }
+        nextDay.onclick = function() {
+            day<=5 ? day++ : day=0;  // If else one liner
+            setData(day);
+        }
+        prevDay.onclick = function() {
+            day>=1 ? day-- : day=6;    
+            setData(day);
+        }
+
+        setData(day); //To set the data in the table on loading window.
+        document.querySelector('.timetable div h2').innerHTML = "Today's Timetable"; //To prevent overwriting the heading on loading;
+
+    </script>
+</body>
+</html>
