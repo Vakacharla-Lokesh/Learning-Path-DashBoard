@@ -9,15 +9,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.static("/views/images"));
 
-const db = new pg.Client({
-    user: "postgres",
-    host: "localhost",
-    database: "sih",
-    password: "luckyloki",
-    port: 5432,
-});
+// const db = new pg.Client({
+//     user: "postgres",
+//     host: "localhost",
+//     database: "sih",
+//     password: "luckyloki",
+//     port: 5432,
+// });
 
-db.connect();
+// db.connect();
 
 // VARIABLES TO UPDATE USER LOGIN STATUS AND HOME PAGE LINK IN LOGO
 var logged_in = "false";
